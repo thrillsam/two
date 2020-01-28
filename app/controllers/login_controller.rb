@@ -8,7 +8,7 @@ class LoginController < ApplicationController
   	user = AuthenticateUser.new(params[:email], params[:password]).call
   	if user.present?
       session[:user_id] = user.id
-      redirect_to users_url
+      redirect_to "/two/users"
     else
       render 'new', status: :unauthorized
     end
@@ -16,7 +16,7 @@ class LoginController < ApplicationController
 
   def destroy
     destroy_session
-    redirect_to root_url
+    redirect_to "/two/login"
   end
 
   private 
